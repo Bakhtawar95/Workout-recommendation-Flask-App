@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="data.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+        .global-header {
+            position: fixed ;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+        
+        .row {
+            display: flex;
+            align-items: center;
+            height: 80px;
+            padding: 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .global-logo a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 22px;
+            margin-left: 50px;
+        }
+        
+        .Login {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 22px;
+            margin-left: 10px;
+        }
+        
+        ul {
+            font-size: 13px;
+            line-height: 21px;
+        }
+        
+        li:first-child {
+            margin-left: 0;
+        }
+        
+        li {
+            display: inline-block;
+            margin-left: 28px;
+            padding-bottom: 22px;
+            position: relative;
+        }
+        
+        li > a {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            text-decoration: none;
+            color: #252222;
+            font-weight: bold;
+        }
+        
+        .sub-nav {
+            background: #f7f7f7;
+            border-radius: 5px;
+            box-shadow: 0 10px 8px 0 rgba(0,0,0,0.2);
+            display: none;
+            left: -120px;
+            padding: 16px;
+            position: absolute;
+            top: 100%;
+            width: 628px;
+            z-index: 2;
+        }
+        
+        #services:hover .sub-nav {
+            display: flex;
+        }
+        
+        .sub-nav-col {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            max-width: 50%;
+        }
+        
+        .left {
+            margin-right: 4px;
+        }
+        
+        .right {
+            margin-left: 4px;
+        }
+        
+        .sub-nav-box {
+            background: #fff;
+            border-radius: 3px;
+            display: flex;
+            flex: 0 1 auto;
+            flex-direction: column;
+            font-size: 14px;
+            justify-content: center;
+            margin: 4px 0;
+            max-height: 200px;
+            padding: 24px 14px 24px 96px;
+            position: relative;
+            transition: .2s all ease-in-out;
+            text-decoration: none;
+        }
+        
+        .icon-background {
+            height: 64px;
+            width: 64px;
+            background: #252222;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 14px;
+        }
+        
+        .icon {
+            color: #fff;
+            font-size: 20px;
+        }
+        
+        .sub-nav-box h4 {
+            font-size: 12px;
+            letter-spacing: 0.9px;
+            line-height: 16px;
+            margin: 0 0 0.5em;
+            padding: 0;
+            text-transform: uppercase;
+            color: #292D34;
+        }
+        
+        .sub-nav-box p {
+            color: #292D34;
+            line-height: 16px;
+        }
+        
+        .sub-nav::after {
+            bottom: 100%;
+            left: 140px;
+            content: '';
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border: solid transparent;
+            border-color: rgba(252,252,252,0);
+            border-bottom-color: #f7f7f7;
+            border-width: 20px;
+            border-radius: 2px;
+            margin-left: -20px;
+        }
+        
+        .sub-nav-box:hover h4, .sub-nav-box:hover p {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        #box-1:hover, #icon-1 {
+            background: #7e3ef3;
+        }
+        
+        #box-2:hover, #icon-2 {
+            background: #fe4242;
+        }
+        
+        #box-3:hover, #icon-3 {
+            background: #2ee1f9;
+        }
+        
+        #box-4:hover, #icon-4 {
+            background: #2ef968;
+        }
+        
+        #box-5:hover, #icon-5 {
+            background: #ffcf11;
+        }
+        
+        #box-6:hover, #icon-6 {
+            background: #86ffc6;
+        }
+        
+        #box-7:hover, #icon-7 {
+            background: #ff60b2;
+        }
+        
+        #box-8:hover, #icon-8 {
+            background: #5462ff;
+        }
+        
+        body{
+            background-color: #3a6d78;
+            
+        }
+        
+        
+        #belastning-dropdown {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fbfbfb;
+            width: 80%;
+            height: 45%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            margin-top: 1%;
+            border-radius: 20px;
+          }
+          .belastning{
+            justify-items: center;
+          }
+          .dropdown-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          
+          .dropdown-content p {
+            color: black;
+            padding: 12px 16px;
+            margin: 0;
+            cursor: pointer; 
+          }
+          
+          .dropdown-content p:hover {
+            background-color: #9f3838;
+          }
+          
+        
+        #stabilitet-dropdown {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fbfbfb;
+            width: 80%;
+            height: 45%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            margin-top: 1%;
+            border-radius: 20px;
+          }
+          
+        
+          .stabilitet-btn{
+            font-size: 30px;
+            transform: scale(1.5);
+          }
+        
+          .dropdown-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            margin-top: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+          }
+          
+          .dropdown-content p {
+            color: black;
+            padding: 12px 16px;
+            margin: 0;
+            cursor: pointer;
+          }
+          
+          .dropdown-content p:hover {
+            background-color: #9f3838;
+          }
+          
+          #stabilitet-btn:focus + #stabilitet-dropdown {
+            display: block;
+          }
+        
+        #flexibility-dropdown {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fbfbfb;
+            width: 80%;
+            height: 45%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            margin-top: 1%;
+            border-radius: 20px;
+          }
+          .flexibility{
+            justify-items: center;
+          }
+          .dropdown-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          
+          .dropdown-content p {
+            color: black;
+            padding: 12px 16px;
+            margin: 0;
+            cursor: pointer; 
+          }
+          
+          .dropdown-content p:hover {
+            background-color: #9f3838;
+          }
+          
+          #flexibility-btn:focus + #flexibility-dropdown {
+            display: block;
+          }
+        
+        #summering-dropdown {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fbfbfb;
+            width: 80%;
+            height: 45%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            margin-top: 1%;
+            border-radius: 20px;
+          }
+        
+          
+          .dropdown-content1 {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            
+          }
+        
+          .dropdown-content p {
+            color: black;
+            padding: 12px 16px;
+            margin: 0;
+            cursor: pointer;
+          }
+          
+          .dropdown-content p:hover {
+            background-color: #9f3838;
+          }
+          
+          #summering-btn:focus + #summering-dropdown {
+            display: block;
+          }
+          
+        
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top: 100px;
+            }
+        
+        .Belastning{
+            justify-content: right;
+            width: 300px;
+            height: 300px;
+            }
+            
+        
+        .Stabilitet{
+            justify-content: left;
+            margin-left: 400px;
+            }
+        
+        .Summering{
+              margin-left: 400px;
+            }
+        
+        button{
+            font-weight: bold;
+            font-size: 17px;
+            background: transparent;
+            text-transform: uppercase;
+            border-color:transparent;
+            padding:10px;
+            letter-spacing: 2px;
+        }
+        
+        button:focus{
+            color: rgb(0, 0, 0);
+            border-color: #00ff40;
+            border-radius: 20px;
+        }
+        
+        .container2{
+          display: flex;
+          flex-direction: row;
+          justify-content: left;
+          align-content: left;
+          margin-top: 3%;
+          margin-left: 10px;
+          margin-bottom: 10px;
+          border-radius: 20px;
+          box-shadow: 0px 0px 20px #ccc;
+          }
+        
+          .psykiskt{
+            width: 50%;
+            height: 200px;
+            background-color: white;
+            border-radius: 20px;
+            
+          }
+        
+          .title1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+          }
+          
+          .ready {
+            font-size: 20px;
+            color: rgb(0, 0, 0);
+            justify-content: center;
+          }
+          .ready {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          }
+          .ready button {
+            margin-top: 8px;
+          }
+          .workout {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;  
+          }
+        
+          .vertical-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          }
+          
+          .vertical-line * {
+            margin: 0 auto;
+          }
+          
+          .checkmark {
+            position: relative;
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid black;
+          }
+          
+          .checkmark::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 7px;
+            height: 14px;
+            border: solid black;
+            border-width: 0 3px 3px 0;
+          }
+          
+          input[type="file"] {
+            display: block;
+            margin-top: 20px;
+          }
+          
+         
+        
+          
+          .mål{
+            width: 50%;
+            height: 200px;
+            background-color: white;
+            border-radius: 20px;
+            margin-left: 5px;
+            box-shadow: 0px 0px 20px #ccc;
+          }
+        
+          .targets{
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            justify-content: center;
+            align-content: center;
+            display: flex;
+            margin-top: 1px;
+            
+          }
+          .content3{
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            justify-content: left;
+            align-items: left;
+            display: flex;
+            column-gap: 20px;
+            height: fit-content;
+            
+          }
+          
+          .psykiskt2 p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          
+          .psykiskt2 label {
+            font-size: 14px;
+          }
+          
+          .psykiskt2 input[type="checkbox"] {
+            margin-right: 5px;
+          }
+          
+          .psykiskt2 input[type="submit"] {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+          }
+          
+          .psykiskt2 input[type="submit"]:hover {
+            background-color: #3e8e41;
+          }
+          .psykiskt2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 60%;
+            max-height: 30%;
+            margin: 0 auto;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #ccc;
+            margin-top: 2%;
+          }
+          
+          .psykiskt2 form {
+            min-width: 20%;
+            max-height: 20%;
+        
+          }
+          
+          .psykiskt2 canvas {
+            margin-left: 2%;
+            margin-right: 20%;
+            justify-content: left;
+          }
+        
+        
+          .psykiskt3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 50%;
+            max-height: 50%;
+            margin: 0 auto;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #ccc;
+            margin-top: 2%;
+          }
+        
+          .psykiskt3 p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          
+          .psykiskt3 label {
+            font-size: 14px;
+          }
+          
+          .psykiskt3 input[type="checkbox"] {
+            margin-right: 5px;
+          }
+          
+          .psykiskt3 input[type="submit"] {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+          }
+          
+          .psykiskt3 input[type="submit"]:hover {
+            background-color: #3e8e41;
+          }
+          
+          .psykiskt3 form {
+            min-width: 20%;
+            max-height: 20%;
+        
+          }
+          
+          
+        </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Workout Recommendation</title>
+</head>
+
+<body>
+
+    <header class="global-header">
+		<div class="row">
+			<div class="global-logo">
+				<a href="">Resma Therapy</a>
+			</div>
+			<nav class="nav-menu">
+				<ul>
+					<li><a href="">Home</a></li>
+					<li id="services"><a href="#">Services</a>
+					<div class="sub-nav">
+						<div class="sub-nav-col left">
+							<a href="{{ url_for('Profil') }}" class="sub-nav-box" id="box-1">
+								<div class="icon-background" id="icon-1">
+									<i class="fab fa-sellsy icon"></i>
+								</div>
+								<h4>Profil</h4>
+								<p>Settings</p>
+							</a>
+							<a href="#" class="sub-nav-box" id="box-2">
+								<div class="icon-background" id="icon-2">
+									<i class="fas fa-user-lock icon"></i>
+								</div>
+								<h4>Target</h4>
+								<p>Development</p>
+							</a>
+							<a href="{{ url_for('Kontakt') }}" class="sub-nav-box" id="box-3">
+								<div class="icon-background" id="icon-3">
+									<i class="fas fa-chart-line icon"></i>
+								</div>
+								<h4>Contact</h4>
+								<p></p>
+							</a>
+							
+						</div>
+						<div class="sub-nav-col right"> 
+							<a href="{{ url_for('Skada') }}" class="sub-nav-box" id="box-5">
+								<div class="icon-background" id="icon-5">
+									<i class="fas fa-trophy icon"></i>
+								</div>
+								<h4>Injury</h4>
+								<p>Learn more about injuries</p>
+							</a>
+							<a href="{{ url_for('Verktyg') }}" class="sub-nav-box" id="box-4">
+								<div class="icon-background" id="icon-4">
+									<i class="fas fa-hand-holding-usd icon"></i>
+								</div>
+								<h4>Tools</h4>
+								<p>Register Tools</p>
+							</a>
+							<a href="{{ url_for('Support') }}" class="sub-nav-box" id="box-8">
+								<div class="icon-background" id="icon-8">
+									<i class="fas fa-phone-alt icon"></i>
+								</div>
+								<h4>Support</h4>
+								<p>Troubleshooting</p>
+							</a>
+						</div>
+					</div>
+					<li><a href="{{ url_for('Login') }}">Login</a></li>
+				</ul>
+			</nav>	
+		</div>
+	</header>	
+
+    <div class="container">
+        <div class="belastning">
+            <button id="belastning-btn">Burdan</button>
+            <div id="belastning-dropdown">
+                <div class="dropdown-content">
+                    <p1>Burdan</p1>
+                    <div id="bel_chart"></div>
+                    <!-- Add table here -->
+                    <div class="Schema">
+                        <table id="exerciseTable">
+                          <tr>
+                            <th>Exercises</th>
+                            <th>Lateral Leg Lift</th>
+                            <th>Hip thrust</th>
+                            <th>Standing toe raise</th>
+                            <th>Standing hamstring curls</th>
+                            <th>Straight leg raises</th>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td><input type="text" value="50" style="width: 70%;" oninput="updateValue(this)"> <span>99</span></td>
+                            <td><input type="text" value="50" style="width: 70%;" oninput="updateValue(this)"> <span>99</span></td>
+                            <td><input type="text" value="50" style="width: 70%;" oninput="updateValue(this)"> <span>99</span></td>
+                            <td><input type="text" value="50" style="width: 70%;" oninput="updateValue(this)"> <span>99</span></td>
+                            <td><input type="text" value="50" style="width: 70%;" oninput="updateValue(this)"> <span>99</span></td>
+                          </tr>
+                        </table>
+                        <button onClick="updateRow()">Update and add new row</button>
+                      </div>
+                    <script>
+                        function updateRow() {
+                        var table = document.getElementById("exerciseTable");
+                        var rows = table.rows;
+                        var lastRow = rows[rows.length - 1];
+                        var newRow = table.insertRow(-1);
+
+                        newRow.insertCell(0).innerHTML = parseInt(lastRow.cells[0].innerHTML) + 1;
+
+                        for (var i = 1; i < lastRow.cells.length; i++) {
+                            var newCell = newRow.insertCell(i);
+                            var randomValue = Math.floor(Math.random() * 101); // Generate a random number between 0 and 100
+                            newCell.innerHTML = '<input type="text" value="' + randomValue + '" style="width: 70%;" oninput="updateNewValue(this)"> <span>' + calculateValue(randomValue) + '</span>';
+                        }
+                        }
+
+                        function updateValue(input) {
+                        var valueSpan = input.nextElementSibling;
+                        valueSpan.textContent = calculateValue(input.value);
+                        }
+
+                        function updateNewValue(input) {
+                        var valueSpan = input.nextElementSibling;
+                        // Remove the line below to prevent updating the existing values
+                        // input.setAttribute("oninput", "updateValue(this)");
+                        }
+
+                        function calculateValue(n) {
+                        var weight = 60; // Replace with the desired weight value or an input field
+                        var value = (0.033 * n * weight).toFixed(0); // Use the formula and round the result to 0 decimal places
+                        return Math.max(value, 1); // Ensure the value is always greater than 1
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var btn = document.getElementById('belastning-btn');
+              var dropdown = document.getElementById('belastning-dropdown');
+          
+              btn.addEventListener('click', function() {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+              });
+          
+              // Close the dropdown if the user clicks outside of it and not within the container
+              window.onclick = function(event) {
+                if (!event.target.matches('#belastning-btn') && !dropdown.contains(event.target)) {
+                  dropdown.style.display = 'none';
+                }
+              }
+            });
+          </script>          
+          
+
+
+        <div class="stabilitet">
+            <button id="stabilitet-btn">Stability</button> 
+            <div id="stabilitet-dropdown">
+                <div class="dropdown-content">
+                <p1>Stability</p1>
+                </div>
+                <div class="graf">
+                    
+                </div>
+            </div>
+        </div>
+        <script>
+            const stabilityBtn = document.getElementById('stabilitet-btn');
+            const stabilityChartCanvas = document.getElementById('stabilityChart').getContext('2d');
+            const stabilityChart = new Chart(stabilityChartCanvas, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Stability',
+                        data: [],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+    
+            function updateStabilityData() {
+                // Replace this with an API call to fetch the updated sensor_data.stability value
+                const newStabilityValue = Math.random() * 100;
+    
+                stabilityChart.data.labels.push(new Date().toLocaleTimeString());
+                stabilityChart.data.datasets[0].data.push(newStabilityValue);
+    
+                // Remove the oldest data point if you want to limit the number of data points displayed
+                if (stabilityChart.data.labels.length > 10) {
+                    stabilityChart.data.labels.shift();
+                    stabilityChart.data.datasets[0].data.shift();
+                }
+    
+                stabilityChart.update();
+            }
+    
+            stabilityBtn.addEventListener('click', () => {
+                setInterval(updateStabilityData, 5000);
+            });
+        </script>
+        
+        <div class="flexibility">
+            <button id="flexibility-btn">Flexibility</button> 
+            <div id="flexibility-dropdown">
+                <div class="dropdown-content">
+                <p1>Flexibility</p1>
+                </div>
+                <div class="graf">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="summering">
+            <button id="summering-btn">Summary</button>
+            <div id="summering-dropdown">
+                
+                    <p>Angle data not available</p>
+            
+
+                <canvas id="combinedChart"></canvas>
+                
+                
+                <script>
+                    
+                    
+                    const btn = document.querySelector("summering-btn");
+                    const summering= document.querySelector("container");
+    
+                    btn.addEventListener("click", function() {
+                        if (summering.style.display === "block"){
+                            summering.style.display="none";
+    
+                        } else {
+                            summering,dropdown.style.display ="block";
+                        }
+                    }); 
+                </script>
+                <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+                <div class="dropdown-content1">
+                <p1>Belastning</p1>
+                <p2>Stabilitet</p2>
+                <p3>Psykiskt</p3>
+                <div class="callout" data-closable>
+                    <button class="close-button-summering" aria-label="Close alert" type="button" data-close>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="psykiskt2">
+      <form action="/submit-form" method="post">
+        <p>Select a level of training from below that's most suited for you:</p>
+        <input type="checkbox" name="training" value="1" id="training-1" onClick="uncheckOther(this)">
+        <label for="training-1">1 - Beginner</label><br>
+        <input type="checkbox" name="training" value="2" id="training-2" onClick="uncheckOther(this)">
+        <label for="training-2">2 - Intermediate</label><br>
+        <input type="checkbox" name="training" value="3" id="training-3" onClick="uncheckOther(this)">
+        <label for="training-3">3 - Advanced</label><br>
+        
+        <input type="submit" value="SELECT">
+      </form>    
+    </div>
+
+    <script>
+      function uncheckOther(checkbox) {
+        var checkboxes = document.getElementsByName("training");
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i] !== checkbox) {
+            checkboxes[i].checked = false;
+          }
+        }
+      }
+    </script>
+
+  
+
+<div class="psykiskt3" style="text-align:center;">
+  <form action="/submit-ques-form" method="post">
+  {% if selected_level %}
+  <p>Workout Recommendation:</p>
+  <p>{{ selected_level }} Level.</p>
+  
+  {% endif %}
+  {% if response == "yes" %}
+  <p>{{ exc }}</p>
+  <p>Next Recommendation:</p>
+  {% endif %}
+  {% if response == "no" %}
+  <p>{{ exc }}</p>
+  {% endif %}
+  {% if selected_level or response == "yes" or response == "no" %}
+  <img src="{{ url_for('static', filename='images/' + filename) }}" alt="My Image" style="display: block; margin: auto;">
+  
+  <h3>Program: {{ prog }}</h3>
+  <h2>Exercise {{ st }} : {{ variable }}</h2>
+  <p>How to do: {{ fetched_value }}</p>
+  <p>{{ ques}}</p>
+  
+  <input type="submit" name="answer" value="YES">
+  <input type="submit" name="answer" value="NO">
+  {% endif %}
+
+</form>
+
+</div>
+
+
+<div class="psykiskt3">
+  <form action="/no-form" method="post">
+  {% if response == "nope" %}
+  <p>No problem. Why weren't you able to do the exercise.</p>
+  <input type="checkbox" name="reason" value="1" id="reason-1" onClick="uncheckOther2(this)">
+        <label for="reason-1">1 - It's too heavy</label><br>
+        <input type="checkbox" name="reason" value="2" id="reason-2" onClick="uncheckOther2(this)">
+        <label for="reason-2">2 - It's painful</label><br>
+        <input type="checkbox" name="reason" value="3" id="reason-3" onClick="uncheckOther2(this)">
+        <label for="reason-3">3 - Both</label><br>
+        
+        <input type="submit" value="Submit Response">
+  
+  {% endif %}
+  
+</form>
+      
+</div>
+<script>
+  function uncheckOther2(checkbox) {
+    var checkboxes = document.getElementsByName("reason");
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i] !== checkbox) {
+        checkboxes[i].checked = false;
+      }
+    }
+  }
+</script>
